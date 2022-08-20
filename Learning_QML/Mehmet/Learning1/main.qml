@@ -11,7 +11,7 @@ Window {
 
     Rectangle {
         id: rectangle
-        color: "#151313"
+        color: "#151312"
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
