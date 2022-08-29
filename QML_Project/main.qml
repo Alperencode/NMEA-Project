@@ -9,13 +9,9 @@ Window {
     title: qsTr("QML-Project")
 
     Rectangle {
-        id: rectangle
+        id: background
         color: "#4872b6"
         anchors.fill: parent
-        anchors.rightMargin: 0
-        anchors.bottomMargin: 0
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
 
         Rectangle {
             id: row1_box1
@@ -36,7 +32,6 @@ Window {
                 font.bold: true
                 font.family: "Times New Roman"
                 font.pixelSize: 24
-
             }
             Text {
                 id: heading_value
@@ -47,9 +42,21 @@ Window {
                 horizontalAlignment: Text.AlignHCenter
                 font.bold: true
                 font.pixelSize: 24
+                Text {
+                    id: heading_degree
+                    color: "#ffffff"
+                    text: qsTr("°")
+                    anchors.left: parent.right
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors.leftMargin: 1.5
+                    font.bold: true
+                    font.family: "Times New Roman"
+                    font.pixelSize: 24
+                }
             }
 
         }
+
         Rectangle {
             id: row1_box2
             width: 200
@@ -92,7 +99,6 @@ Window {
                         font.pixelSize: 26
                     }
                 }
-
                 Image {
                     id: air_temperature_image
                     width: 50
@@ -151,6 +157,7 @@ Window {
                     mipmap: true
                 }
             }
+
             Text {
                 id: humidity_text
                 text: qsTr("Humidity")
@@ -196,6 +203,7 @@ Window {
                     mipmap: true
                 }
             }
+
             Text {
                 id: water_temp_text
                 text: qsTr("Water Temp")
@@ -241,14 +249,8 @@ Window {
                     mipmap: true
                 }
             }
-
-
-
-
-
-
-
         }
+
         Rectangle {
             id: row1_box3
             width: 200
@@ -257,17 +259,6 @@ Window {
             border.color: "#30ffffff"
             anchors.left: row1_box2.right
             anchors.top: parent.top
-
-            Image {
-                id: compass_image
-                source: "images/compass.png"
-                width: 30
-                height: 30
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.horizontalCenter: parent.horizontalCenter
-                mipmap: true
-                fillMode: Image.PreserveAspectFit
-            }
 
             Text {
                 id: cog_text
@@ -293,11 +284,18 @@ Window {
                     font.pixelSize: 24
                 }
             }
-
-
-
-
+            Image {
+                id: compass_image
+                source: "images/compass.png"
+                width: 30
+                height: 30
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                mipmap: true
+                fillMode: Image.PreserveAspectFit
+            }
         }
+
         Rectangle {
             id: row2_box1
             width: 200
@@ -327,8 +325,9 @@ Window {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter
+                font.family: "Segoe UI"
                 font.bold: false
-                font.pixelSize: 36
+                font.pixelSize: 42
                 Text {
                     id: speed_over_ground_kts
                     color: "#ffffff"
@@ -340,12 +339,11 @@ Window {
                     anchors.leftMargin: 3
                     font.bold: false
                     font.family: "Times New Roman"
-                    font.pixelSize: 16
+                    font.pixelSize: 24
                 }
             }
-
-
         }
+
         Rectangle {
             id: row2_box2
             width: 200
@@ -387,6 +385,7 @@ Window {
                     }
                 }
             }
+
             Text {
                 id: pitch_text
                 text: qsTr("PITCH")
@@ -431,10 +430,8 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenterOffset: 10
             }
-
-
-
         }
+
         Rectangle {
             id: row2_box3
             width: 200
@@ -469,7 +466,6 @@ Window {
                 font.family: "Times New Roman"
                 anchors.leftMargin: 30
                 anchors.topMargin: 35
-
                 Text {
                     id: direction_value
                     text: qsTr("0.0")
@@ -491,6 +487,7 @@ Window {
                     }
                 }
             }
+
             Text {
                 id: speed_text
                 text: qsTr("Speed")
@@ -525,11 +522,10 @@ Window {
                         font.pixelSize: 16
                     }
                 }
-
             }
+
             Rectangle {
                 id: brace2
-                y: 43
                 width: 1
                 height: 70
                 color: "#ffffff"
@@ -539,6 +535,7 @@ Window {
                 anchors.verticalCenterOffset: 15
             }
         }
+
         Rectangle {
             id: row3_box1
             width: 200
@@ -547,7 +544,102 @@ Window {
             border.color: "#30ffffff"
             anchors.left: parent.left
             anchors.top: row2_box1.bottom
+
+            Text {
+                id: set_and_drift_text
+                text: qsTr("SET AND DRIFT")
+                anchors.left: parent.left
+                anchors.top: parent.top
+                color: "#ffffff"
+                font.pixelSize: 14
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Times New Roman"
+                anchors.leftMargin: 3
+                anchors.topMargin: 4
+                font.bold: false
+            }
+
+            Text {
+                id: set_text
+                text: qsTr("SET")
+                color: "#ffffff"
+                anchors.left: parent.left
+                anchors.top: parent.top
+                font.pixelSize: 16
+                horizontalAlignment: Text.AlignHCenter
+                font.underline: false
+                font.family: "Times New Roman"
+                anchors.leftMargin: 30
+                anchors.topMargin: 35
+                Text {
+                    id: set_value
+                    text: qsTr("0.0")
+                    color: "#ffffff"
+                    anchors.top: parent.top
+                    font.pixelSize: 26
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.topMargin: 35
+                    Text {
+                        id: set_degree
+                        color: "#ffffff"
+                        text: qsTr("°")
+                        anchors.left: parent.right
+                        horizontalAlignment: Text.AlignHCenter
+                        anchors.leftMargin: 1.5
+                        font.bold: true
+                        font.family: "Times New Roman"
+                        font.pixelSize: 20
+                    }
+                }
+            }
+
+            Text {
+                id: drift_text
+                text: qsTr("DRIFT")
+                color: "#ffffff"
+                anchors.right: parent.right
+                anchors.top: parent.top
+                font.pixelSize: 16
+                horizontalAlignment: Text.AlignHCenter
+                font.underline: false
+                font.family: "Times New Roman"
+                anchors.rightMargin: 30
+                anchors.topMargin: 35
+                Text {
+                    id: drift_value
+                    text: qsTr("0.0")
+                    color: "#ffffff"
+                    anchors.top: parent.top
+                    font.pixelSize: 26
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.topMargin: 35
+                    Text {
+                        id: drift_kts
+                        color: "#ffffff"
+                        text: qsTr("kts")
+                        anchors.left: parent.right
+                        anchors.top: parent.top
+                        anchors.topMargin: 15
+                        horizontalAlignment: Text.AlignHCenter
+                        anchors.leftMargin: 3
+                        font.bold: false
+                        font.family: "Times New Roman"
+                        font.pixelSize: 16
+                    }
+                }
+            }
+
+            Rectangle {
+                id: brace3
+                width: 1
+                height: 70
+                color: "#ffffff"
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenterOffset: 15
+            }
         }
+
         Rectangle {
             id: row3_box2
             width: 200
@@ -556,6 +648,65 @@ Window {
             border.color: "#30ffffff"
             anchors.left: row3_box1.right
             anchors.top: row2_box2.bottom
+
+            Text {
+                id: rot_text
+                text: qsTr("ROT")
+                anchors.left: parent.left
+                anchors.top: parent.top
+                color: "#ffffff"
+                font.pixelSize: 14
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Times New Roman"
+                anchors.leftMargin: 3
+                anchors.topMargin: 4
+                font.bold: false
+            }
+            Text {
+                id: rot_value
+                color: "#ffffff"
+                text: qsTr("0.0")
+                anchors.verticalCenter: parent.verticalCenter
+                horizontalAlignment: Text.AlignHCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.bold: true
+                font.pixelSize: 36
+                Text {
+                    id: rot_degree
+                    color: "#ffffff"
+                    text: qsTr("°")
+                    anchors.left: parent.right
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors.leftMargin: 1.5
+                    font.bold: true
+                    font.family: "Times New Roman"
+                    font.pixelSize: 36
+                }
+                Image {
+                    id: right_arrow_image
+                    height: 40
+                    width: 40
+                    anchors.left: parent.right
+                    anchors.top: parent.top
+                    source: "images/right_arrow.png"
+                    anchors.topMargin: 10
+                    anchors.leftMargin: 20
+                    fillMode: Image.PreserveAspectFit
+                    mipmap: true
+                }
+                Image {
+                    width: 40
+                    height: 40
+                    anchors.right: parent.left
+                    anchors.top: parent.top
+                    anchors.rightMargin: 13
+                    anchors.topMargin: 8
+                    source: "images/left_arrow.png"
+                    fillMode: Image.PreserveAspectFit
+                    mipmap: true
+                }
+            }
+
         }
         Rectangle {
             id: row3_box3
@@ -565,10 +716,49 @@ Window {
             border.color: "#30ffffff"
             anchors.left: row3_box2.right
             anchors.top: row2_box3.bottom
-        }
+
+            Text {
+                id: depth_text
+                text: qsTr("DEPTH")
+                anchors.left: parent.left
+                anchors.top: parent.top
+                color: "#ffffff"
+                font.pixelSize: 14
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Times New Roman"
+                anchors.leftMargin: 3
+                anchors.topMargin: 4
+                font.bold: false
+            }
+            Text {
+                id: depth_value
+                color: "#ffffff"
+                text: qsTr("0.0")
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter
+                font.family: "Segoe UI"
+                font.bold: false
+                font.pixelSize: 42
+                Text {
+                    id: depth_m
+                    color: "#ffffff"
+                    text: qsTr("m")
+                    anchors.left: parent.right
+                    anchors.top: parent.top
+                    anchors.topMargin: 25
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors.leftMargin: 3
+                    font.bold: false
+                    font.family: "Times New Roman"
+                    font.pixelSize: 24
+                }
+            }
+        }   
     }
-
 }
-
-
-
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.1}D{i:23}D{i:39}D{i:48}D{i:61}D{i:57}D{i:63}
+}
+##^##*/
