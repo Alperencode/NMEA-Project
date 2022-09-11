@@ -1,6 +1,6 @@
 # Project Description
 
-The purpose of the project is to parse NMEA sentences and visualize the output data with QML based UI. We will gather the NMEA messages with TCP/IP Protocols, parse them using [pynmea2](https://github.com/Knio/pynmea2) module and update the UI in real-time.
+The purpose of the project is to parse NMEA sentences and visualize the output data with QML based UI. We will gather the NMEA messages with TCP/IP Protocols, parse them using [NMEA-Parser](https://github.com/Alperencode/NMEA-Parser) that we created and update the UI in real-time.
 
 <br>
 
