@@ -1,6 +1,5 @@
 import parsers as parser
-from tkinter import messagebox
-from tkinter import filedialog
+from tkinter import messagebox, ttk, filedialog
 from tkinter import *
 
 def GUI():
@@ -17,20 +16,15 @@ def GUI():
         return
 
     app.geometry("800x600")
-    frame = Frame(app)
-    frame.pack()
 
-    label = Label(frame, text="Parsed Data", font=("Calibri", 24, "bold"))
+    label = Label(app, text="Parsed Data", font=("Calibri", 24))
     label.pack()
 
-    text = Text(frame, width=300, height=300, font=("Arial", 12))
-    text.pack()
+    table = InitializeTable(app)
 
     for key,item in parser.get_result().items():
-        text.insert(END, " "*50 + f"{'-'*80}\n")
-        text.insert(END, " "*70 + f"{key} : {item}\n")
+        table.insert("", "end", text="", values=(key, item))
 
-    text.config(state=DISABLED)
     app.mainloop()
 
 def ParseFile(sentence_file):
@@ -41,6 +35,24 @@ def ParseFile(sentence_file):
     for sentence in sentence_file.readlines():
         parser.parse(sentence)
     return True
+
+def InitializeTable(app):
+    table = ttk.Treeview(app, height=12)
+    table.pack()
+
+    style = ttk.Style()
+    style.configure("Treeview.Heading", font=("Calibri", 20), rowheight=40)
+    style.configure("Treeview", font=("Calibri", 16), rowheight=40)
+
+    table['columns'] = ("Data", "Value")
+    table.column("#0", width=0, stretch=NO)
+    table.column("Data", anchor=CENTER, width=350)
+    table.column("Value", anchor=CENTER, width=350)
+
+    table.heading("Data", text="Data", anchor=CENTER)
+    table.heading("Value", text="Value", anchor=CENTER)
+
+    return table
 
 if __name__ == "__main__":
     GUI()
