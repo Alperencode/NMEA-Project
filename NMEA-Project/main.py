@@ -7,14 +7,15 @@ def GUI():
     app = Tk()
     app.title("NMEA Parser")
     # icon
-    app.iconbitmap("icon.ico")
+    app.iconbitmap("icons/icon.ico")
     app.geometry("0x0")
     app.resizable(False, False)
 
     messagebox.showinfo("Info", "Select a file to parse")
 
-    sentence_file = filedialog.askopenfile(mode='r',initialdir="../logs")
-    ParseFile(sentence_file)
+    sentence_file = filedialog.askopenfile(mode='r',initialdir="./logs")
+    if not ParseFile(sentence_file):
+        return
 
     app.geometry("800x600")
     frame = Frame(app)
@@ -35,10 +36,11 @@ def GUI():
 def ParseFile(sentence_file):
     if sentence_file is None:
         messagebox.showerror("Error", "No file selected")
-        exit()
+        return False
 
     for sentence in sentence_file.readlines():
         parser.parse(sentence)
+    return True
 
 if __name__ == "__main__":
     GUI()
