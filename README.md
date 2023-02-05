@@ -1,3 +1,7 @@
+<h1 align=center> NMEA Parser Project </h1>
+
+<p align=center> <img src="images/NMEA-Project.gif" width=650> </p>
+
 # Project Description
 <hr>
 
