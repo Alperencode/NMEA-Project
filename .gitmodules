@@ -1,0 +1,3 @@
+[submodule "NMEA-Parser"]
+	path = NMEA-Parser
+	url = https://github.com/alperencode/NMEA-Parser
