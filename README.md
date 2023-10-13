@@ -42,7 +42,6 @@ Parsed data:
 ## Roadmap of the Project
 <hr>
 
-<h4>
 
 - Main
     - Developing NMEA parser ✔️
@@ -54,7 +53,6 @@ Parsed data:
 - Additional
     - Creating QML based UI
 
-</h4>
 
 <br>
 
